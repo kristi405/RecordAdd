@@ -67,7 +67,7 @@ class RecordStore: NSObject, ObservableObject {
     let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
     let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
     for audio in directoryContents {
-      let recording = Recording(fileURL: audio, createdAt: getCreationDate(for: audio))
+      let recording = Recording(fileURL: audio)
       recordings.append(recording)
     }
     
@@ -78,7 +78,6 @@ class RecordStore: NSObject, ObservableObject {
   
   func deleteRecording(urlsToDelete: [URL]) {
     for url in urlsToDelete {
-      print(url)
       do {
         try FileManager.default.removeItem(at: url)
       } catch {

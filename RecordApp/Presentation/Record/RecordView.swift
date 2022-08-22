@@ -16,7 +16,6 @@ struct RecordView: View {
   var body: some View {
     NavigationView {
       VStack {
-//        RecordingsList(recordStore: recordStore)
         HStack(alignment: .center, spacing: 30) {
           if recordStore.recording == false {
             Button(action: {self.recordStore.startRecording()}) {

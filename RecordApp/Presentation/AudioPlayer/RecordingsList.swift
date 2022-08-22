@@ -10,43 +10,27 @@ import SwiftUI
 struct RecordingsList: View {
   @ObservedObject var recordStore: RecordStore
   
+  var groupedByDate: [Date: [Recording]] {
+    Dictionary(grouping: recordStore.recordings, by: {$0.createdAt})
+  }
+  
+  var headers: [Date] {
+    groupedByDate.map({ $0.key }).sorted()
+  }
+  
   var body: some View {
-    NavigationView {
-      VStack {
-        ScrollView {
-          List {
-            ForEach(recordStore.recordings, id: \.createdAt) { recording in
-              RecordingRow(audioURL: recording.fileURL)
-            }
-            .onDelete(perform: delete)
+    List {
+      ForEach(headers, id: \.self) { header in
+        Section(header: Text(header, style: .date)) {
+          ForEach(groupedByDate[header] ?? []) { reminder in
+            RecordingRow(audioURL: reminder.fileURL)
           }
+          .onDelete(perform: delete)
         }
-        HStack {
-          Button {
-            print("1111")
-          } label: {
-            Circle()
-              .frame(width: 80, height: 80, alignment: .trailing)
-              .background(Color.blue)
-          }
-        }
-        .padding(.vertical, 15)
       }
-      .navigationBarTitle("My reminders")
-      .navigationBarItems(trailing: EditButton())
     }
   }
-  
-  var plusButtonView: some View {
-    Button {
-      print("111")
-    } label: {
-      R.image.plus.image
-    }
-    .frame(width: 35, height: 35, alignment: .trailing)
-    .padding(.trailing, 20)
-  }
-  
+
   func delete(at offsets: IndexSet) {
     var urlsToDelete = [URL]()
     for index in offsets {

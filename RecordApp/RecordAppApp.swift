@@ -11,7 +11,7 @@ import SwiftUI
 struct RecordAppApp: App {
     var body: some Scene {
         WindowGroup {
-          RecordingsList(recordStore: RecordStore())
+          RemindersView(recordStore: RecordStore())
         }
     }
 }
