@@ -45,8 +45,8 @@ class AudioPlayerStore: NSObject, ObservableObject, AVAudioPlayerDelegate {
 
 extension AudioPlayerStore {
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-          if flag {
-              isPlaying = false
-          }
-      }
+    if flag {
+      isPlaying = false
+    }
+  }
 }

@@ -11,7 +11,9 @@ import SwiftUI
 struct RecordAppApp: App {
     var body: some Scene {
         WindowGroup {
-          RemindersView(recordStore: RecordStore())
+          RemindersView(recordAudioStore: RecordAudioStore(),
+                        recordStore: RecordStore(),
+                        textInputStore: TextInputStore())
         }
     }
 }

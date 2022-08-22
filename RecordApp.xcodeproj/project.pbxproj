@@ -11,7 +11,7 @@
 		6D4D8F4528AD2BAB0043E336 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F4428AD2BAB0043E336 /* RecordView.swift */; };
 		6D4D8F4728AD2BAD0043E336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D4D8F4628AD2BAD0043E336 /* Assets.xcassets */; };
 		6D4D8F4A28AD2BAD0043E336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D4D8F4928AD2BAD0043E336 /* Preview Assets.xcassets */; };
-		6D4D8F5328AD30D40043E336 /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F5228AD30D40043E336 /* RecordStore.swift */; };
+		6D4D8F5328AD30D40043E336 /* RecordAudioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F5228AD30D40043E336 /* RecordAudioStore.swift */; };
 		6D4D8F5528AD32B60043E336 /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F5428AD32B60043E336 /* RecordingsList.swift */; };
 		6D4D8F5728AD34060043E336 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F5628AD34060043E336 /* Extensions.swift */; };
 		6D4D8F5A28AD35800043E336 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F5928AD35800043E336 /* Recording.swift */; };
@@ -20,6 +20,10 @@
 		6D4D8F6B28AFCE960043E336 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F6A28AFCE960043E336 /* R.generated.swift */; };
 		6D4D8F7028AFD0CB0043E336 /* RSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F6F28AFD0CB0043E336 /* RSwift+Extensions.swift */; };
 		6D4D8F7528AFD43B0043E336 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D8F7428AFD43B0043E336 /* RemindersView.swift */; };
+		6D84171228B3BFD60005EBB7 /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D84171128B3BFD60005EBB7 /* RecordStore.swift */; };
+		6D84171428B3C75A0005EBB7 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D84171328B3C75A0005EBB7 /* View+Extensions.swift */; };
+		6D84171728B3CD9E0005EBB7 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D84171628B3CD9E0005EBB7 /* TextInputView.swift */; };
+		6D84171928B3CDE80005EBB7 /* TextInputStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D84171828B3CDE80005EBB7 /* TextInputStore.swift */; };
 		A6A9DF3E14B149A61BA49F83 /* Pods_RecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E6DF076DEF7D3FE941FCB1 /* Pods_RecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +35,7 @@
 		6D4D8F4628AD2BAD0043E336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D4D8F4928AD2BAD0043E336 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6D4D8F5028AD2C030043E336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		6D4D8F5228AD30D40043E336 /* RecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStore.swift; sourceTree = "<group>"; };
+		6D4D8F5228AD30D40043E336 /* RecordAudioStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAudioStore.swift; sourceTree = "<group>"; };
 		6D4D8F5428AD32B60043E336 /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
 		6D4D8F5628AD34060043E336 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6D4D8F5928AD35800043E336 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
@@ -40,6 +44,10 @@
 		6D4D8F6A28AFCE960043E336 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		6D4D8F6F28AFD0CB0043E336 /* RSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSwift+Extensions.swift"; sourceTree = "<group>"; };
 		6D4D8F7428AFD43B0043E336 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		6D84171128B3BFD60005EBB7 /* RecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStore.swift; sourceTree = "<group>"; };
+		6D84171328B3C75A0005EBB7 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		6D84171628B3CD9E0005EBB7 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		6D84171828B3CDE80005EBB7 /* TextInputStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputStore.swift; sourceTree = "<group>"; };
 		7499CFA4389B1089DC4385B6 /* Pods-RecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordApp.debug.xcconfig"; path = "Target Support Files/Pods-RecordApp/Pods-RecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D4E6DF076DEF7D3FE941FCB1 /* Pods_RecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,7 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				6D4D8F4428AD2BAB0043E336 /* RecordView.swift */,
-				6D4D8F5228AD30D40043E336 /* RecordStore.swift */,
+				6D4D8F5228AD30D40043E336 /* RecordAudioStore.swift */,
+				6D84171128B3BFD60005EBB7 /* RecordStore.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -135,9 +144,10 @@
 		6D4D8F6328AFC2430043E336 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				6D84171528B3CD880005EBB7 /* Common */,
 				6D4D8F7328AFD42A0043E336 /* Reminders */,
-				6D4D8F5128AD30A60043E336 /* Record */,
 				6D4D8F5D28AD38490043E336 /* AudioPlayer */,
+				6D4D8F5128AD30A60043E336 /* Record */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -163,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				6D4D8F6F28AFD0CB0043E336 /* RSwift+Extensions.swift */,
+				6D84171328B3C75A0005EBB7 /* View+Extensions.swift */,
 				6D4D8F5628AD34060043E336 /* Extensions.swift */,
 			);
 			path = Extensions;
@@ -174,6 +185,15 @@
 				6D4D8F7428AFD43B0043E336 /* RemindersView.swift */,
 			);
 			path = Reminders;
+			sourceTree = "<group>";
+		};
+		6D84171528B3CD880005EBB7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6D84171628B3CD9E0005EBB7 /* TextInputView.swift */,
+				6D84171828B3CDE80005EBB7 /* TextInputStore.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		9B1A9EE3C47DC6D4A05F4442 /* Frameworks */ = {
@@ -320,12 +340,16 @@
 			files = (
 				6D4D8F5728AD34060043E336 /* Extensions.swift in Sources */,
 				6D4D8F5C28AD360C0043E336 /* Helper.swift in Sources */,
+				6D84171728B3CD9E0005EBB7 /* TextInputView.swift in Sources */,
 				6D4D8F6B28AFCE960043E336 /* R.generated.swift in Sources */,
+				6D84171928B3CDE80005EBB7 /* TextInputStore.swift in Sources */,
 				6D4D8F6128AD38740043E336 /* AudioPlayerStore.swift in Sources */,
+				6D84171228B3BFD60005EBB7 /* RecordStore.swift in Sources */,
 				6D4D8F7028AFD0CB0043E336 /* RSwift+Extensions.swift in Sources */,
 				6D4D8F5A28AD35800043E336 /* Recording.swift in Sources */,
 				6D4D8F4528AD2BAB0043E336 /* RecordView.swift in Sources */,
-				6D4D8F5328AD30D40043E336 /* RecordStore.swift in Sources */,
+				6D4D8F5328AD30D40043E336 /* RecordAudioStore.swift in Sources */,
+				6D84171428B3C75A0005EBB7 /* View+Extensions.swift in Sources */,
 				6D4D8F7528AFD43B0043E336 /* RemindersView.swift in Sources */,
 				6D4D8F4328AD2BAB0043E336 /* RecordAppApp.swift in Sources */,
 				6D4D8F5528AD32B60043E336 /* RecordingsList.swift in Sources */,

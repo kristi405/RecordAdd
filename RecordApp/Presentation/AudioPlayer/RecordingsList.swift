@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecordingsList: View {
-  @ObservedObject var recordStore: RecordStore
+  @ObservedObject var recordStore: RecordAudioStore
   
   var groupedByDate: [Date: [Recording]] {
     Dictionary(grouping: recordStore.recordings, by: {$0.createdAt})
@@ -70,6 +70,6 @@ struct RecordingRow: View {
 
 struct RecordingsList_Previews: PreviewProvider {
   static var previews: some View {
-    RecordingsList(recordStore: RecordStore())
+    RecordingsList(recordStore: RecordAudioStore())
   }
 }

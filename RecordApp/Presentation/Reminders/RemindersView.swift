@@ -8,27 +8,29 @@
 import SwiftUI
 
 struct RemindersView: View {
+  @ObservedObject var recordAudioStore: RecordAudioStore
   @ObservedObject var recordStore: RecordStore
+  @ObservedObject var textInputStore: TextInputStore
   @State var isNiewBattonPressed: Bool = false
   
   var body: some View {
     NavigationView {
       VStack(alignment: .leading) {
         Spacer(minLength: 15)
-        RecordingsList(recordStore: recordStore)
+        RecordingsList(recordStore: recordAudioStore)
         HStack {
           Spacer()
           plusButtonView
         }
         NavigationLink("", isActive: $isNiewBattonPressed) {
-          RecordView(recordStore: recordStore)
+          RecordView(recordAudioStore: recordAudioStore,
+                     recordStore: recordStore,
+                     textInputStore: TextInputStore())
         }
       }
       .navigationBarTitle("My reminders")
       .navigationBarTitleDisplayMode(.inline)
-      .navigationBarItems(trailing: EditButton())
-      
-      
+      .navigationBarItems(trailing: EditButton()) 
     }
   }
   
