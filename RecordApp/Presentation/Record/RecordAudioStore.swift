@@ -11,10 +11,14 @@ import Combine
 import AVFoundation
 
 class RecordAudioStore: NSObject, ObservableObject {
-  let objectWillChange = PassthroughSubject<RecordAudioStore, Never>()
-  var audioRecorder: AVAudioRecorder!
-  var recordings = [Recording]()
+  @Published var textInputStore = TextInputStore()
+  @Published var date = Date()
   
+  // MARK: Constants
+  private var audioRecorder: AVAudioRecorder!
+  let objectWillChange = PassthroughSubject<RecordAudioStore, Never>()
+  var recordings = [Recording]()
+  var reminders = [Reminder]()
   var recording = false {
     didSet {
       objectWillChange.send(self)
@@ -24,7 +28,7 @@ class RecordAudioStore: NSObject, ObservableObject {
   override init() {
     super.init()
     
-    fetchRecordings()
+//    fetchRecordings()
   }
   
   func startRecording() {
@@ -35,9 +39,14 @@ class RecordAudioStore: NSObject, ObservableObject {
     } catch {
       print("Failed to set up recording session")
     }
+    let audioFilename: URL
     let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    let audioFilename = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "dd-MM-YY_'at'_HH:mm:ss")).m4a")
-    
+    if textInputStore.enteredText.isEmpty {
+      audioFilename = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "dd-MM-YY_'at'_HH:mm:ss")).m4a")
+    } else {
+      audioFilename = documentPath.appendingPathComponent(textInputStore.enteredText)
+    }
+
     let settings = [
       AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
       AVSampleRateKey: 12000,
@@ -56,8 +65,6 @@ class RecordAudioStore: NSObject, ObservableObject {
   func stopRecording() {
     audioRecorder.stop()
     recording = false
-    
-    fetchRecordings()
   }
   
   func fetchRecordings() {
@@ -70,9 +77,7 @@ class RecordAudioStore: NSObject, ObservableObject {
       let recording = Recording(fileURL: audio)
       recordings.append(recording)
     }
-    
-    recordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedAscending})
-    
+    recordings.sort(by: { $0.createdAt > $1.createdAt })
     objectWillChange.send(self)
   }
   
@@ -84,7 +89,6 @@ class RecordAudioStore: NSObject, ObservableObject {
         print("File could not be deleted!")
       }
     }
-    
-    fetchRecordings()
+    objectWillChange.send(self)
   }
 }

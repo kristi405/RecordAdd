@@ -8,35 +8,48 @@
 import SwiftUI
 
 struct RemindersView: View {
-  @ObservedObject var recordAudioStore: RecordAudioStore
-  @ObservedObject var recordStore: RecordStore
-  @ObservedObject var textInputStore: TextInputStore
-  @State var isNiewBattonPressed: Bool = false
+  @ObservedObject var remindersStore: RemindersStore
   
   var body: some View {
     NavigationView {
       VStack(alignment: .leading) {
+        navigation
         Spacer(minLength: 15)
-        RecordingsList(recordStore: recordAudioStore)
+        RecordingsList(recordStore: remindersStore.recordAudioStore)
         HStack {
           Spacer()
           plusButtonView
         }
-        NavigationLink("", isActive: $isNiewBattonPressed) {
-          RecordView(recordAudioStore: recordAudioStore,
-                     recordStore: recordStore,
-                     textInputStore: TextInputStore())
+        NavigationLink("", isActive: $remindersStore.isNiewBattonPressed) {
+          RecordView(recordAudioStore: remindersStore.recordAudioStore,
+                     recordStore: remindersStore.recordStore)
         }
       }
-      .navigationBarTitle("My reminders")
-      .navigationBarTitleDisplayMode(.inline)
-      .navigationBarItems(trailing: EditButton()) 
+      .navigationBarHidden(true)
     }
+  }
+  
+  
+  @ViewBuilder
+  var navigation: some View  {
+    ZStack {
+      HStack(alignment: .top) {
+        Spacer()
+        EditButton()
+        .padding(.trailing, 30)
+      }
+      Text("My reminders")
+        .foregroundColor(.black)
+        .font(.system(size: 20, weight: .bold))
+        .frame(maxWidth: UIScreen.main.bounds.width / 2)
+    }
+    .frame(maxWidth: .infinity, maxHeight: 35)
+    .background(Color.white)
   }
   
   var plusButtonView: some View {
     Button {
-      isNiewBattonPressed = true
+      remindersStore.plusButtonDidTapped()
     } label: {
       ZStack {
       RoundedRectangle(cornerRadius: 50)

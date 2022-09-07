@@ -17,15 +17,17 @@ struct RecordingsList: View {
   var headers: [Date] {
     groupedByDate.map({ $0.key }).sorted()
   }
-  
+ 
   var body: some View {
     List {
       ForEach(headers, id: \.self) { header in
         Section(header: Text(header, style: .date)) {
-          ForEach(groupedByDate[header] ?? []) { reminder in
-            RecordingRow(audioURL: reminder.fileURL)
+          if let recordings = groupedByDate[header] {
+            ForEach(recordings.enumeratedArray(), id: \.element.id) { index, reminder in
+              RecordingRow(audioURL: reminder.fileURL)
+            }
+            .onDelete(perform: delete)
           }
-          .onDelete(perform: delete)
         }
       }
     }
@@ -36,7 +38,7 @@ struct RecordingsList: View {
     for index in offsets {
       urlsToDelete.append(recordStore.recordings[index].fileURL)
     }
-    
+    recordStore.recordings.remove(atOffsets: offsets)
     recordStore.deleteRecording(urlsToDelete: urlsToDelete)
   }
 }

@@ -14,3 +14,9 @@ extension Date {
     return dateFormatter.string(from: self)
   }
 }
+
+extension Collection {
+  func enumeratedArray() -> [(offset: Int, element: Self.Element)] {
+    Array(enumerated())
+  }
+}

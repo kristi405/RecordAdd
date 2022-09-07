@@ -9,17 +9,17 @@ import SwiftUI
 import Foundation
 import Combine
 import AVFoundation
+import RealmSwift
 
 struct RecordView: View {
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @ObservedObject var recordAudioStore: RecordAudioStore
   @ObservedObject var recordStore: RecordStore
-  @ObservedObject var textInputStore: TextInputStore
-  @State private var date = Date()
   @State private var editing: Bool = false
   
-  
   var body: some View {
-    NavigationView {
+    VStack {
+      navigation
       VStack(spacing: 40) {
         name
           .padding(.top, 15)
@@ -28,25 +28,47 @@ struct RecordView: View {
         Spacer()
         recordButton
       }
-      .navigationTitle("New Reminder")
-      .navigationBarTitleDisplayMode(.inline)
-      .padding(.horizontal, 25)
-      .ignoresSafeArea(.keyboard)
-      .hideKeyboardWhenTappedAround()
     }
+    .navigationBarHidden(true)
+    .padding(.horizontal, 25)
+    .ignoresSafeArea(.keyboard)
+    .hideKeyboardWhenTappedAround()
+  }
+  
+  @ViewBuilder
+  var navigation: some View  {
+    ZStack {
+      HStack(alignment: .top) {
+        CustomBackButton {
+          presentationMode.wrappedValue.dismiss()
+        }
+        Spacer()
+        CustomTrallingButton(title: "Save", action: {
+          recordAudioStore.fetchRecordings()
+          presentationMode.wrappedValue.dismiss()
+        })
+        .padding(.trailing, 5)
+      }
+      Text("New reminder")
+        .foregroundColor(.black)
+        .font(.system(size: 20, weight: .bold))
+        .frame(maxWidth: UIScreen.main.bounds.width / 2)
+    }
+    .frame(maxWidth: .infinity, maxHeight: 35)
+    .background(Color.white)
   }
   
   var name: some View {
     VStack(alignment: .leading, spacing: 20) {
       Text("Name")
-      TextInputView(placeholder: "Enter the name", store: textInputStore)
+      TextInputView(placeholder: "Enter the name", store: recordAudioStore.textInputStore)
     }
   }
   
   var chooseDate: some View {
     DatePicker(
       "Choose the date",
-      selection: $date,
+      selection: $recordAudioStore.date,
       displayedComponents: [.date]
     )
     .datePickerStyle(.compact)
@@ -56,7 +78,7 @@ struct RecordView: View {
     VStack {
       DatePicker(
         "Choose the time",
-        selection: $date,
+        selection: $recordAudioStore.date,
         displayedComponents: .hourAndMinute
       )
     }
@@ -92,7 +114,6 @@ struct RecordView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     RecordView(recordAudioStore: RecordAudioStore(),
-               recordStore: RecordStore(),
-               textInputStore: TextInputStore())
+               recordStore: RecordStore())
   }
 }
